@@ -2,7 +2,6 @@ import cv2
 import numpy as np
 import argparse
 
-
 def create_mask(frame):
     # Отсечение по цвету: зеленый цвет крышек банок
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
@@ -67,6 +66,7 @@ def main():
                 if dist < best_dist and dist < max_dist:
                     best_dist = dist
                     best_j = j
+            # Проверяем, есть ли новая крышечка в кадре
             if best_j >= 0:
                 used.append(best_j)
                 cx = centers[best_j][0]
